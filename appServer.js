@@ -1,15 +1,14 @@
 const _express = require('express');
-const _bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const _booksRouter = require('./routers/books-router');
 
 // Express Listen port
 const app = _express();
-app.listen(5000, listenPort);
 
-function listenPort() {
-    console.log('Server is running on post 5000')
-}
+// Listen ports
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Server is running on post ${port}`));
 
 //Home
 app.get('/', function (req, res) {
@@ -17,10 +16,10 @@ app.get('/', function (req, res) {
 });
 
 //Books Router
-app.use('/api', _booksRouter);
+app.use('/api/books', _booksRouter);
 
-//body parsing middleware.
-app.use(_bodyParser.json());
+//body parsing middleware. support json encoded bodies
+app.use(bodyParser.json());
 
 //Basic informarion send
 app.get('/contact', function (req, res) {

@@ -56,11 +56,22 @@ const booksController = {
         }
     },
 
-    saveBook:function(req, res) {
+    saveBook: function (req, res, next) {
+        // books.push(req.body);        
         console.log(req.body);
-        
         res.status(201); // Created
         res.send(req.body);
+    },
+    removeBook: function (req, res) {
+        let bookId = req.params.id;
+        console.log(bookId);
+
+        books.forEach((book, index) => {
+            if (book.id == bookId) {
+                books.splice(index, 1);
+                res.send(`Book ${book.id} is deleted`)
+            }
+        })
     }
 };
 
