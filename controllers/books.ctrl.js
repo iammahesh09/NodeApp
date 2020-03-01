@@ -57,7 +57,7 @@ const booksController = {
     },
 
     saveBook: function (req, res, next) {
-        // books.push(req.body);        
+        books.push(req.body);        
         console.log(req.body);
         res.status(201); // Created
         res.send(req.body);

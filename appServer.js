@@ -5,6 +5,7 @@ const _booksRouter = require('./routers/books-router');
 
 // Express Listen port
 const app = _express();
+app.use(_express.json())
 
 // Listen ports
 const port = process.env.PORT || 5000;
