@@ -19,6 +19,7 @@ app.get('/', function (req, res) {
 //Books Router
 app.use('/api', _booksRouter);
 
+//body parsing middleware.
 app.use(_bodyParser.json());
 
 //Basic informarion send
