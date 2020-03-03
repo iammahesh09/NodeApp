@@ -7,5 +7,6 @@ _router.get('/', _booksCtrl.getAllBooks);
 _router.get('/:id', _booksCtrl.getBookId);
 _router.post('', _booksCtrl.saveBook);
 _router.delete('/:id', _booksCtrl.removeBook);
+_router.patch('/:id', _booksCtrl.updateBook);
 
 module.exports = _router;

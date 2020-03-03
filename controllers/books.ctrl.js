@@ -57,11 +57,12 @@ const booksController = {
     },
 
     saveBook: function (req, res, next) {
-        books.push(req.body);        
+        books.push(req.body);
         console.log(req.body);
         res.status(201); // Created
         res.send(req.body);
     },
+
     removeBook: function (req, res) {
         let bookId = req.params.id;
         console.log(bookId);
@@ -72,7 +73,29 @@ const booksController = {
                 res.send(`Book ${book.id} is deleted`)
             }
         })
+    },
+
+    updateBook: function (req, res) {
+        let updateBook = req.body;
+        let bId = +req.params.id;
+        books.forEach((book, index) => {
+            if (book.id === bId) {
+                book.author = updateBook.author;
+                book.country = updateBook.country;
+                book.imageLink = updateBook.imageLink;
+                book.author = updateBook.author;
+                book.language = updateBook.language;
+                book.link = updateBook.link;
+                book.author = updateBook.author;
+                book.pages = updateBook.pages;
+                book.title = updateBook.title;
+                book.year = updateBook.year;
+            }
+        });
+        res.status(204); // Created
+        res.send(req.body);
     }
+
 };
 
 
